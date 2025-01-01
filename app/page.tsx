@@ -20,7 +20,7 @@ export default function Home() {
           currentPosition={currentPosition}
         />
         
-        <div className="mt-12 px-[calc(2rem+100%/12)]">
+        <div className="mt-12 sm:px-[calc(2rem+100%/12)]">
           {/* First down position */}
           <div className="flex justify-between gap-8">
             <div className="flex items-center space-x-2">

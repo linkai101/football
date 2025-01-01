@@ -14,15 +14,15 @@ export function FootballField({
   startingPosition,
   currentPosition,
 }: FootballFieldProps) {
-  const hPadding = 0.5; // horizontal padding, in rem
+  const hPadding = 1; // horizontal padding, in rem
 
   return (
     <div
-      className={cn("relative overflow-hidden", className)}
+      className={cn("overflow-hidden", className)}
       style={{ paddingLeft: `${hPadding}rem`, paddingRight: `${hPadding}rem` }}
-    > 
+    >
       <div
-      className="h-16"
+        className="h-16 relative"
         style={{ perspective: "10rem" }} // 3d perspective effect
       >
         <Field
@@ -33,24 +33,14 @@ export function FootballField({
         <ProgressLine
           startingPosition={startingPosition}
           currentPosition={currentPosition}
-          className="absolute inset-y-0" 
-          style={{
-            left: `calc(${hPadding}rem + (100% - ${hPadding*2}rem) / 12)`,
-            width: `calc((100% - ${hPadding*2}rem) * 10 / 12)`
-          }}
+          className="absolute inset-y-0 left-[calc(100%/12)] w-[calc(100%*10/12)]"
         />
       </div>
 
-      <div className="mt-0.5 mx-[calc(100%/12+0.5rem)] flex justify-evenly text-xs text-neutral-300 font-mono relative">
-        <span>10</span>
-        <span>20</span>
-        <span>30</span>
-        <span>40</span>
-        <span>50</span>
-        <span>40</span>
-        <span>30</span>
-        <span>20</span>
-        <span>10</span>
+      <div className="mt-0.5 mx-[calc(100%/12-0.5rem)] flex justify-evenly text-xs text-neutral-300 font-mono relative">
+        {[10,20,30,40,50,40,30,20,10].map((n, i) => (
+          <span key={i}>{n}</span>
+        ))}
       </div>
     </div>
   );
@@ -65,7 +55,7 @@ interface FieldProps {
 function Field({ firstDownLine, className, style }: FieldProps) {
   return (
     <div
-      className={cn("flex origin-bottom", className)}
+      className={cn("flex", className)}
       style={{ transform: "rotate3d(1,0,0,20deg)", ...style }} // 3d rotation effect
     >
       <div className="w-1/12 bg-neutral-100 rounded-l-lg"></div>
