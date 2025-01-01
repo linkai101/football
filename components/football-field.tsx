@@ -14,7 +14,7 @@ export function FootballField({
   startingPosition,
   currentPosition,
 }: FootballFieldProps) {
-  const hPadding = 1; // horizontal padding, in rem
+  const hPadding = 0.5; // horizontal padding, in rem
 
   return (
     <div
@@ -39,6 +39,18 @@ export function FootballField({
             width: `calc((100% - ${hPadding*2}rem) * 10 / 12)`
           }}
         />
+      </div>
+
+      <div className="mt-0.5 mx-[calc(100%/12+0.5rem)] flex justify-evenly text-xs text-neutral-300 font-mono relative">
+        <span>10</span>
+        <span>20</span>
+        <span>30</span>
+        <span>40</span>
+        <span>50</span>
+        <span>40</span>
+        <span>30</span>
+        <span>20</span>
+        <span>10</span>
       </div>
     </div>
   );

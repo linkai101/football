@@ -11,6 +11,9 @@ export default {
   		center: true
   	},
   	extend: {
+			fonts: {
+				mono: 'var(--font-mono)',
+			},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
