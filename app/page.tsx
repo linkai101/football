@@ -12,7 +12,7 @@ export default function Home() {
   const [currentPosition, setCurrentPosition] = useState<number|undefined>(); // 0 to 100
 
   return (
-    <div className="container max-w-xl h-dvh p-4 flex flex-col justify-center">
+    <div className="container max-w-xl min-h-dvh px-4 py-16 flex flex-col justify-center">
       <div>
         <FootballField
           firstDownLine={firstDownLine}

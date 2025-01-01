@@ -37,7 +37,7 @@ export function FootballField({
         />
       </div>
 
-      <div className="mt-0.5 mx-[calc(100%/12-0.5rem)] flex justify-evenly text-xs text-neutral-300 font-mono relative">
+      <div className="mt-0.5 mx-[calc(100%/12-0.5rem)] flex justify-evenly text-xs text-neutral-300 font-mono relative select-none">
         {[10,20,30,40,50,40,30,20,10].map((n, i) => (
           <span key={i}>{n}</span>
         ))}
@@ -69,7 +69,8 @@ function Field({ firstDownLine, className, style }: FieldProps) {
         {firstDownLine !== undefined &&
           <div
             className={cn(
-              "absolute w-full h-full border-l-2 border-yellow-300 transition-transform ease-in-out duration-500",
+              "absolute w-full h-full border-l-2 border-yellow-300 transition-all ease-in-out duration-500",
+              [0,100].includes(firstDownLine) && "opacity-0"
             )}
             style={{ transform: `translateX(calc(${firstDownLine}% - 1px))` }}
           />
@@ -99,7 +100,7 @@ function ProgressLine({ startingPosition, currentPosition, className, style }: P
       {/* Starting position + line to current position */}
       {(startingPosition !== undefined && adjustedCurrentPosition != undefined) && // render only if both are defined
         <div
-          className="absolute w-[108%] h-full flex items-center transition-transform ease-in-out duration-500"
+          className="absolute w-[108%] h-full flex items-center transition-all ease-in-out duration-500"
           style={{ transform: `translateX(calc(${Math.min(startingPosition, adjustedCurrentPosition)}% / 108 * 100 - 1px))` }}
         >
           <div
@@ -113,7 +114,7 @@ function ProgressLine({ startingPosition, currentPosition, className, style }: P
       {adjustedCurrentPosition !== undefined && // render if defined
         <div
           className={cn(
-            "absolute w-full h-full flex items-center transition-transform ease-in-out duration-500",
+            "absolute w-full h-full flex items-center transition-all ease-in-out duration-500",
           )}
           style={{ transform: `translateX(calc(${adjustedCurrentPosition}% - 1px))` }}
         >
