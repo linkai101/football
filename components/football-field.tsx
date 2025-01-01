@@ -40,9 +40,6 @@ export function FootballField({
           }}
         />
       </div>
-
-      <div className="mx-[calc(100%/12)] h-4 font-mono bg-red-200">
-      </div>
     </div>
   );
 }
@@ -56,7 +53,7 @@ interface FieldProps {
 function Field({ firstDownLine, className, style }: FieldProps) {
   return (
     <div
-      className={cn("flex", className)}
+      className={cn("flex origin-bottom", className)}
       style={{ transform: "rotate3d(1,0,0,20deg)", ...style }} // 3d rotation effect
     >
       <div className="w-1/12 bg-neutral-100 rounded-l-lg"></div>
@@ -100,12 +97,12 @@ function ProgressLine({ startingPosition, currentPosition, className, style }: P
       {/* Starting position + line to current position */}
       {(startingPosition !== undefined && adjustedCurrentPosition != undefined) && // render only if both are defined
         <div
-          className="absolute w-full h-full flex items-center transition-transform ease-in-out duration-500"
-          style={{ transform: `translateX(calc(${Math.min(startingPosition, adjustedCurrentPosition)}% - 1px))` }}
+          className="absolute w-[108%] h-full flex items-center transition-transform ease-in-out duration-500"
+          style={{ transform: `translateX(calc(${Math.min(startingPosition, adjustedCurrentPosition)}% / 108 * 100 - 1px))` }}
         >
           <div
             className="h-2.5 bg-neutral-700 rounded-full transition-all ease-in-out duration-500"
-            style={{ width: `${Math.abs(startingPosition - adjustedCurrentPosition)}%` }}
+            style={{ width: `calc(${Math.abs(startingPosition - adjustedCurrentPosition)}% / 108 * 100)` }}
           />
         </div>
       }
